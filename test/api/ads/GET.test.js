@@ -10,7 +10,7 @@ const request = chai.request;
 
 describe('GET /api/ads', () => {
   
-  before(async () => {
+  beforeEach(async () => {
 		const testAdsOne = new Ads({ 
       _id: '5d9f1140f10a81216cfd4408', 
       title: 'Rolki używane ale dobre',
