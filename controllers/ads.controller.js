@@ -74,10 +74,18 @@ exports.deleteOne = async (req, res) => {
   }
 };
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! to repair
-exports.searchOne = async (req, res) => {
+exports.searchAll = async (req, res) => {
   try {
-    const searchAds = await Ads.findById(req.params.id);
+    const searchPhase = req.params.searchPhrase;
+
+    const searchAds = await Ads.find({
+			$or: [
+				{ title: { $regex: searchParams, $options: 'i' } },
+				{ content: { $regex: searchParams, $options: 'i' } },
+				{ location: { $regex: searchParams, $options: 'i' } },
+			],
+		}).populate('user')
+    
     if(!searchAds) res.status(404).json({ message: 'Not found' });
     else res.json(searchAds);
   }

@@ -13,6 +13,6 @@ router.delete('/ads/:id', AdsController.deleteOne);
 
 router.put('/ads/:id', AdsController.putOne);
 
-router.get('/ads/search/:searchPhrase', AdsController.searchOne);
+router.get('/ads/search/:searchPhrase', AdsController.searchAll);
 
 module.exports = router;

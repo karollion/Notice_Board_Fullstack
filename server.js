@@ -1,10 +1,13 @@
 // Imports
-const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const passportSetup = require('./config/passport');
 
 // import routes
 const adsRoutes = require('./routes/ads.routes');
@@ -14,6 +17,13 @@ const app = express();
 app.use(helmet());
 // middleware for diferent ports client and server
 app.use(cors());
+
+// init session mechanism
+app.use(session({ secret: 'anything' }));
+
+// init passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 const server = app.listen('3030', () => {
   console.log('Server is running on port: 3030');
