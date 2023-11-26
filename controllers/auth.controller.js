@@ -1,18 +1,40 @@
 const User = require('../models/Users.model');
 const bcrypt = require('bcryptjs');
+const getImageFileType = require('../utils/getImageFileType');
+const fs = require('fs');
+const escape = require('../utils/espaceFunc');
 
 exports.register = async (req, res) => {
   try{
     const { login, password, phone } = req.body;
-    if(login && typeof login === 'string' && password && typeof password === 'string') {
+    const fileType = req.file ? await getImageFileType(req.file) : 'unknown';
+    phone = Number(phone);
+    login = escape(login);
+    const avatar = req.file.filename;
+
+    if(login && 
+      typeof login === 'string' && 
+      password && 
+      typeof password === 'string' && 
+      req.file && 
+      ['image/png', 'image/jpeg', 'image/gif'].includes(fileType) && 
+      typeof phone === 'number' && 
+      req.file.size <= 1048576) 
+      {
       const userWithLogin = await User.findOne({ login });
       if (userWithLogin) {
+        // delete photo from uploads folder
+				const path = `public/uploads/${avatar}`
+				fs.unlinkSync(path)
         return res.status(409).send({ message: 'User with this login alredy exist' });
       }
 
-      const user = await User.create({ login, password: await bcrypt.hash(password, 10) });
+      const user = await User.create({ login, password: await bcrypt.hash(password, 10), avatar: avatar, phone: phone });
       res.status(201).send({ message: 'User created' + user.login })
     } else {
+      // delete photo from uploads folder
+			const path = `public/uploads/${avatar}`
+			fs.unlinkSync(path)
       res.status(400).send({ message: 'Bad request'});
     }
 
@@ -23,7 +45,7 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   try{
-    const { login, password, phone } = req.body;
+    const { login, password} = req.body;
     if(login && typeof login === 'string' && password && typeof password === 'string') {
       const user = await User.findOne({ login });
       if (!user) {
