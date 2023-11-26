@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
 
-describe('POST /api/ads', () => {
+describe('Ads route test: POST /api/ads', () => {
 
   it('/ should insert new document to db and return success', async () => {
     const res = await request(server).post('/api/ads').send({ 

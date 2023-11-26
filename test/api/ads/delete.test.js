@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
 
-describe('DELETE /api/ads', () => {
+describe('Ads route test: DELETE /api/ads', () => {
   
   before(async () => {
 		const testAdsOne = new Ads({ 

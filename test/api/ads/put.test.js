@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 const expect = chai.expect;
 const request = chai.request;
 
-describe('PUT /api/ads', () => {
+describe('Ads route test: PUT /api/ads', () => {
   
   before(async () => {
 		const testAdsOne = new Ads({ 
