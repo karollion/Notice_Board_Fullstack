@@ -1,15 +1,14 @@
 import { useDispatch } from 'react-redux';
-import { addNotice } from '../../../redux/noticesRedux';
 import { useNavigate } from "react-router-dom";
+import { addNoticeRequest } from '../../../redux/noticesRedux';
 import NoticeForm from '../NoticeForm/NoticeForm';
 
 const AddNoticeForm = () => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = notice => {
-    dispatch(addNotice(notice));
+    dispatch(addNoticeRequest(notice));
     navigate('/');
   };
  

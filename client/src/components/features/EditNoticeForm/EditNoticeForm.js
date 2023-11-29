@@ -1,4 +1,4 @@
-import { updateNotice } from "../../../redux/noticesRedux";
+import { updateNoticeRequest } from "../../../redux/noticesRedux";
 import { getNoticeById } from "../../../redux/noticesRedux";
 import { useNavigate, Navigate } from "react-router-dom";
 import NoticeForm from "../NoticeForm/NoticeForm";
@@ -6,7 +6,6 @@ import { useParams } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
 const EditNoticeForm = () => {
-  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,7 +13,7 @@ const EditNoticeForm = () => {
   const noticeData = useSelector(state => getNoticeById(state, id));
 
   const handleSubmit = notice => {
-    dispatch(updateNotice({...notice, id}));
+    dispatch(updateNoticeRequest(notice));
     navigate('/');
   };
   if (!noticeData) return <Navigate to="/" />;
