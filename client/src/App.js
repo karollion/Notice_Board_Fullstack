@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { isUserLoginedIn } from './redux/usersRedux';
 import { fetchNotices } from './redux/noticesRedux';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -20,6 +21,7 @@ import WrongPage from './components/pages/WrongPage/WrongPage';
 
 function App() {
   const dispatch = useDispatch();
+  useEffect(() => dispatch(isUserLoginedIn()), [dispatch]);
   useEffect(() => dispatch(fetchNotices()), [dispatch]);
 
   return (

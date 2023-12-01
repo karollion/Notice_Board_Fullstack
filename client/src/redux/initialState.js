@@ -1,7 +1,6 @@
 const initialState = {
-  notices: [
-    
-  ]
+  notices: [],
+  user: null
 };
 
 export default initialState;
