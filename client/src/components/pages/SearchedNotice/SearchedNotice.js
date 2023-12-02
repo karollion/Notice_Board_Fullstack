@@ -1,4 +1,4 @@
-import styles from './SearchedNotice.module.scss'
+//import styles from './SearchedNotice.module.scss'
 import { useParams } from 'react-router';
 
 
@@ -15,8 +15,8 @@ const SearchedNotice = () => {
   const  {phase}  = useParams();  
   
   return (
-    <div className={styles.addNotice}>
-      <h2>SearchNotice page</h2>
+    <div className='min-vh-100'>
+      <h2>Searched notices</h2>
       <p>{phase}</p>
     </div>
   );

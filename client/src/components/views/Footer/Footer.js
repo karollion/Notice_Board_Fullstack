@@ -8,7 +8,9 @@ const Footer = () => {
   }
 
     return (
+      <footer className='footer mt-auto py-3'>
         <p className='text-center text-secondary'>Copyright &copy; NoticeBoardApp {getDate()}</p>
+      </footer>
     );
 };
 

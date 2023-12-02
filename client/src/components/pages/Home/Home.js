@@ -4,17 +4,18 @@ import Spinner from 'react-bootstrap/Spinner';
 import { getIsLoading } from '../../../redux/isLoadingRedux';
 import { getAllNotices } from '../../../redux/noticesRedux';
 import SearchForm from '../../features/SearchForm/SearchForm';
+import AlNotices from '../../features/AlNotices/AlNotices';
 
 const Home = () => {
   const notices = useSelector(state => getAllNotices(state));
   const isLoading = useSelector(state => getIsLoading(state));
 
   return (
-    <div >
+    <div className='min-vh-100'>
       <SearchForm />
       {notices.length === 0 && !isLoading && <p>No notices</p>}
       {isLoading && <Spinner animation='border' variant='primary' />}
-      {!isLoading && <p>Notices</p>}
+      {!isLoading && <AlNotices />}
     </div>
   );
 };

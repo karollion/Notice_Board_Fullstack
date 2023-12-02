@@ -31,7 +31,7 @@ const Login = () => {
         if(res.status === 200) {
           setStatus('success');
           dispatch(logIn({ login }));
-          setTimeout(() => { navigate('/'); }, 500);
+          setTimeout(() => { navigate('/') }, 500);
         } else if (res.status === 400) {
           setStatus('clientError');
         } else {
@@ -43,7 +43,7 @@ const Login = () => {
       })
   };
   return (
-    <Form onSubmit={handleSubmit} className='col-12 col-sm-3 mx-auto'> 
+    <Form onSubmit={handleSubmit} className='col-12 col-sm-3 mx-auto min-vh-100'> 
       <h2 className='my-4'>Login</h2>
 
       {status === 'success' && (

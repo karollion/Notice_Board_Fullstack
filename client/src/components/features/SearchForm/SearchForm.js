@@ -1,4 +1,4 @@
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Row, Col } from "react-bootstrap";
 import { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -16,20 +16,25 @@ const SearchForm = () => {
   };
   
   return (
-    <Form onSubmit={validate(handleSubmit)}>
-      <Form.Group className="mb-3" controlId="formSearchPhase">
-        <Form.Control
-          {...register("searchPhase", { required: true })}
-          value={searchPhase}
-          onChange={e => setSearchPhase(e.target.value)}
-          type='text' placeholder='Search notice'
-        />
-        {errors.searchPhase && <small className="d-block form-text text-danger mt-2">Search phase can't be empty</small>}
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Search
-      </Button>
+    <Form onSubmit={validate(handleSubmit)} className="d-flex justify-content-center">
+      <Row className="w-25">
+        <Col>
+          <Form.Group className="mb-3" controlId="formSearchPhase">
+            <Form.Control
+              {...register("searchPhase", { required: true })}
+              value={searchPhase}
+              onChange={e => setSearchPhase(e.target.value)}
+              type='text' placeholder='Search notice'
+            />
+            {errors.searchPhase && <small className="d-block form-text text-danger mt-2">Search phase can't be empty</small>}
+          </Form.Group>
+        </Col>
+        <Col>
+          <Button variant="primary" type="submit">
+            Search
+          </Button>
+        </Col>
+      </Row>
     </Form>
   );
 };

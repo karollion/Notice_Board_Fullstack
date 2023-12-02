@@ -12,7 +12,7 @@ const NoticeForm = ({ action, actionText, ...props }) => {
   const [picture, setPicture] = useState(props.picture || '');
   const [price, setPrice] = useState(props.price || '');
   const [location, setLocation] = useState(props.location || '');
-  const [seller, setSeller] = useState(props.seller || '');
+  const [seller] = useState(props.seller);
 
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
   const [dateError, setDateError] = useState(false);
@@ -25,9 +25,11 @@ const NoticeForm = ({ action, actionText, ...props }) => {
   };
   
   return (
-    <Form onSubmit={validate(handleSubmit)}>
-    
-      <Form.Group className="mb-3" controlId="formtitle">
+    <Form onSubmit={validate(handleSubmit)} className='col-12 col-sm-3 mx-auto'>
+
+      <h2 className='my-4' >{props.pageTitle}</h2>
+
+      <Form.Group  controlId="formtitle">
         <Form.Label>Title</Form.Label>
         <Form.Control
           {...register("title", { required: true, minLength: 10, maxLength: 50 })}
@@ -38,7 +40,7 @@ const NoticeForm = ({ action, actionText, ...props }) => {
         {errors.title && <small className="d-block form-text text-danger mt-2">Title length is incorrect (min is 10, max is 50)</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formContent">
+      <Form.Group  controlId="formContent">
         <Form.Label>Content</Form.Label>
         <Form.Control 
           {...register("content", { required: true, minLength: 20, maxLength: 1000 })}
@@ -48,13 +50,13 @@ const NoticeForm = ({ action, actionText, ...props }) => {
           {errors.content && <small className="d-block form-text text-danger mt-2">Content length is incorrect (min is 20, max is 1000)</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formPublished">
+      <Form.Group  controlId="formPublished">
         <Form.Label>Date</Form.Label><br/>
         <DatePicker selected={date} onChange={(date) => setDate(date)} placeholder="Enter date" value={date}/>
         {dateError && <small className="d-block form-text text-danger mt-2">Date can't be empty</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formpicture">
+      <Form.Group  controlId="formpicture">
         <Form.Label>Picture</Form.Label>
         <Form.Control
           {...register("picture", { required: true })}
@@ -65,7 +67,7 @@ const NoticeForm = ({ action, actionText, ...props }) => {
         {errors.picture && <small className="d-block form-text text-danger mt-2">Picture can't be empty</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formprice">
+      <Form.Group  controlId="formprice">
         <Form.Label>Price</Form.Label>
         <Form.Control
           {...register("price", { required: true })}
@@ -76,7 +78,7 @@ const NoticeForm = ({ action, actionText, ...props }) => {
         {errors.price && <small className="d-block form-text text-danger mt-2">Price can't be empty</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formlocation">
+      <Form.Group  controlId="formlocation">
         <Form.Label>Location</Form.Label>
         <Form.Control
           {...register("location", { required: true })}
@@ -87,17 +89,7 @@ const NoticeForm = ({ action, actionText, ...props }) => {
         {errors.location && <small className="d-block form-text text-danger mt-2">Location can't be empty</small>}
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formSeller">
-        <Form.Label>Seller</Form.Label>
-        <Form.Control 
-          {...register("seller", { required: true })}
-          type="text" placeholder="Enter seller" 
-          value={seller} 
-          onChange={e => setSeller(e.target.value)} />
-          {errors.seller && <small className="d-block form-text text-danger mt-2">Seller can't be empty</small>}
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
+      <Button className='my-3' variant="primary" type="submit">
       {actionText}
       </Button>
     </Form>

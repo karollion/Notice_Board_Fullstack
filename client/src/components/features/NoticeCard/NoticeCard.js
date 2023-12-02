@@ -1,6 +1,7 @@
 import styles from './NoticeCard.module.scss';
 import { Link } from 'react-router-dom';
 import { Card, Col, Button } from 'react-bootstrap';
+import { IMGS_URL } from '../../../config';
 
 const NoticeCard = ({ notice }) => {
 
@@ -11,7 +12,7 @@ const NoticeCard = ({ notice }) => {
           <img 
             className={styles.image}
             alt={'profile'}
-            src={`${process.env.PUBLIC_URL}/images/${notice.picture}`} />
+            src={ IMGS_URL + notice.picture } />
         </div>
         <p className='mt-3'><span className='fw-bold'>{notice.title}</span></p>
         <p className='mt-3'>{notice.location}</p>

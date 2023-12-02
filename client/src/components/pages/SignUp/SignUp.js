@@ -44,7 +44,7 @@ const SignUp = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='col-12 col-sm-3 mx-auto'> 
+    <Form onSubmit={handleSubmit} className='col-12 col-sm-3 mx-auto min-vh-100'> 
       <h2 className='my-4'>SignUp</h2>
 
       {status === 'success' && (

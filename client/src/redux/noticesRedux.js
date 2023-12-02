@@ -33,8 +33,9 @@ export const updateNoticeRequest = ( notice ) => {
   return(dispatch) => {
     const options = {
       method: 'PUT',
+      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         ...notice,
@@ -50,7 +51,7 @@ export const addNoticeRequest = notice => {
   return(dispatch) => {
     const options = {
       method: 'POST',
-    
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -66,14 +67,15 @@ export const addNoticeRequest = notice => {
   };
 };
 
-export const removeNoticeRequest = notice => {
+export const removeNoticeRequest = id => {
 	return dispatch => {
 		const options = {
 			method: 'DELETE',
+      credentials: 'include',
 		}
 
-		fetch(`${API_URL}/ads/${notice.id}`, options)
-      .then(() => {dispatch(removeNotice(notice.id))})
+		fetch(`${API_URL}/ads/${id}`, options)
+      .then(() => {dispatch(removeNotice(id))})
 	};
 };
 
