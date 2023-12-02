@@ -15,10 +15,10 @@ const Notice = () => {
 
   if (!notice) return <Navigate to="/" />;
   return (
-    <div className='min-vh-100'>
+    <div className='min-vh-100 px-4'>
       <h2 className='my-4' >Notice page</h2>
       <Row>
-        <Col>
+        <Col xs='12' md='6' lg='6' className='p-3 border rounded'>
           <div className={styles.imageBox}>
             <img 
               className={styles.image}
@@ -26,20 +26,20 @@ const Notice = () => {
               src={ IMGS_URL + notice.picture } />
           </div>
         </Col>
-        <Col>
+        <Col xs='12' md='6' lg='6' className='p-3'>
           <h3>{notice.title}</h3>
-          <h3>{notice.date}</h3>
-          <h3>{notice.price}</h3>
+          <p>{notice.date}</p>
+          <p>{notice.price}</p>
           <p>{notice.location}</p>
           <p>{notice.seller}</p>
           <p>{notice.content}</p>
           {user === notice.seller && (
-          <Row>
+          <Row className="d-flex justify-content-center">
             <Col>
-              <Button variant="primary" as={Link} to={"/notice/editNotice/" + notice.id}>Edit</Button>
+              <Button className="w-100 p-3" variant="primary" as={Link} to={"/notice/editNotice/" + notice._id}>Edit</Button>
             </Col>
             <Col>
-              <Button variant="danger" as={Link} to={"/notice/deleteNotice/" + notice.id}>Delete</Button>
+              <Button className="w-100 p-3" variant="danger" as={Link} to={"/notice/deleteNotice/" + notice._id}>Delete</Button>
             </Col>
           </Row>
           )}

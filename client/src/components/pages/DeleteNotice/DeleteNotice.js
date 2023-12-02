@@ -21,23 +21,23 @@ const DeleteNotice = () => {
   };
 
   if (user === notice.seller) {
-  return (
-    <div className='col-12 col-sm-3 mx-auto min-vh-100'>
-      <h2>Delete</h2>
-      <Alert variant='danger'>
-          <Alert.Heading>Are you sure?</Alert.Heading>
-          <p>Do you want to permanently delete this notice?</p>
-      </Alert>
-      <Row className="d-flex justify-content-center">
-        <Col>
-          <Button className="w-100 p-3" variant="secondary" as={Link} to={"/notice/" + id}>NO</Button>
-        </Col>
-        <Col>
-          <Button className="w-100 p-3" variant="danger" onClick={handleAction}>YES</Button>
-        </Col>
-      </Row>
-    </div>
-  );
+    return (
+      <div className='col-12 col-sm-3 mx-auto min-vh-100'>
+        <h2>Delete</h2>
+        <Alert variant='danger'>
+            <Alert.Heading>Are you sure?</Alert.Heading>
+            <p>Do you want to permanently delete this notice?</p>
+        </Alert>
+        <Row className="d-flex justify-content-center">
+          <Col>
+            <Button className="w-100 p-3" variant="secondary" as={Link} to={"/notice/" + id}>NO</Button>
+          </Col>
+          <Col>
+            <Button className="w-100 p-3" variant="danger" onClick={handleAction}>YES</Button>
+          </Col>
+        </Row>
+      </div>
+    );
   } else {
     return (
       <div className='col-12 col-sm-3 mx-auto'>
