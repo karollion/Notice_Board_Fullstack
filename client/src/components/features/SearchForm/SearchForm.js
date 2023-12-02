@@ -11,7 +11,7 @@ const SearchForm = () => {
 
   const handleSubmit = notice => {
     console.log(searchPhase);
-    let adress = '/searchedNotice/' + searchPhase
+    let adress = '/searchedNotice/' + searchPhase;
     navigate(adress);
   };
   

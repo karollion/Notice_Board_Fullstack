@@ -9,7 +9,7 @@ const AlNotices = () => {
     return (
       <Row className='py-4'>
         {notices.map(notice => (
-          <NoticeCard key={notice.id} notice={notice}  />
+          <NoticeCard key={notice._id} notice={notice}  />
         ))}
       </Row>
     );

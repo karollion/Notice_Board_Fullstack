@@ -3,7 +3,7 @@ import { setLoading } from './isLoadingRedux';
 
 //selectors
 export const getAllNotices = ({ notices }) => notices;
-export const getNoticeById = ({ notices }, noticeId) => notices.find(notice => notice.id === noticeId);
+export const getNoticeById = ({ notices }, noticeId) => notices.find(notice => notice._id === noticeId);
 
 // actions
 const createActionName = actionName => `app/notices/${actionName}`;
@@ -42,8 +42,8 @@ export const updateNoticeRequest = ( notice ) => {
       }),
     };
     
-    fetch(`${API_URL}/ads/${notice.id}`, options)
-      .then(() => {dispatch(updateNotice(notice, notice.id))});
+    fetch(`${API_URL}/ads/${notice._id}`, options)
+      .then(() => {dispatch(updateNotice(notice, notice._id))});
   };
 };
 
@@ -84,11 +84,11 @@ const noticesReducer = (statePart = [], action) => {
     case LOAD_NOTICES:
       return [...action.payload];
     case UPDATE_NOTICE:
-      return statePart.map(notice => (notice.id === action.payload.id ? { ...notice, ...action.payload } : notice));
+      return statePart.map(notice => (notice._id === action.payload.id ? { ...notice, ...action.payload } : notice));
     case ADD_NOTICE:
       return [...statePart, { ...action.payload }];
     case REMOVE_NOTICE:
-      return statePart.filter(notice => notice.id !== action.payload);
+      return statePart.filter(notice => notice._id !== action.payload);
     default:
       return statePart;
   };

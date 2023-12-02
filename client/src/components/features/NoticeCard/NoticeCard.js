@@ -16,7 +16,8 @@ const NoticeCard = ({ notice }) => {
         </div>
         <p className='mt-3'><span className='fw-bold'>{notice.title}</span></p>
         <p className='mt-3'>{notice.location}</p>
-        <Button variant="primary" as={Link} to={"/notice/" + notice.id}>Read more</Button>
+        
+        <Button variant="primary" as={Link} to={"/notice/" + notice._id}>Read more</Button>
       </Card>
     </Col>
   );
