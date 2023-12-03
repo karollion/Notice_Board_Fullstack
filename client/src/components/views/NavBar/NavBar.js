@@ -12,12 +12,12 @@ const NavBar = () => {
   return (
     <Container>
       <Navbar  bg="primary" variant="dark" expand="lg" className={`mt-4 mb-4 rounded ${styles.root}`}>
-          <Navbar.Brand className={styles.logo} as={NavLink} to="/"> NoticeBoardApp </Navbar.Brand>
+          <Navbar.Brand className={styles.logo} as={NavLink} to="/"> AdsBoardApp </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/">Home</NavLink>
-              {user ? (<NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/notice/addNotice">Add Notice</NavLink>) : null }
+              {user ? (<NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/ad/addAd">Add Ad</NavLink>) : null }
               {!user ? (<NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/login">Login</NavLink>) : null }
               {!user ? (<NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/signup">Sign up</NavLink>) : null }
               {user ? (<NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} as={NavLink} to="/logout">Logout</NavLink>) : null }

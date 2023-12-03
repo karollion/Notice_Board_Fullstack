@@ -2,20 +2,20 @@
 import { useSelector } from 'react-redux';
 import Spinner from 'react-bootstrap/Spinner';
 import { getIsLoading } from '../../../redux/isLoadingRedux';
-import { getAllNotices } from '../../../redux/noticesRedux';
+import { getAllAds } from '../../../redux/adsRedux';
 import SearchForm from '../../features/SearchForm/SearchForm';
-import AlNotices from '../../features/AlNotices/AlNotices';
+import AllAds from '../../features/AllAds/AllAds';
 
 const Home = () => {
-  const notices = useSelector(state => getAllNotices(state));
+  const ads = useSelector(state => getAllAds(state));
   const isLoading = useSelector(state => getIsLoading(state));
 
   return (
     <div className='min-vh-100'>
       <SearchForm />
-      {notices.length === 0 && !isLoading && <p>No notices</p>}
+      {ads.length === 0 && !isLoading && <p>No notices</p>}
       {isLoading && <Spinner animation='border' variant='primary' />}
-      {!isLoading && <AlNotices />}
+      {!isLoading && <AllAds />}
     </div>
   );
 };

@@ -9,9 +9,8 @@ const SearchForm = () => {
  
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
 
-  const handleSubmit = notice => {
-    console.log(searchPhase);
-    let adress = '/searchedNotice/' + searchPhase;
+  const handleSubmit = ad => {
+    let adress = '/searchedAd/' + searchPhase;
     navigate(adress);
   };
   
@@ -24,7 +23,7 @@ const SearchForm = () => {
               {...register("searchPhase", { required: true })}
               value={searchPhase}
               onChange={e => setSearchPhase(e.target.value)}
-              type='text' placeholder='Search notice'
+              type='text' placeholder='Search ad'
             />
             {errors.searchPhase && <small className="d-block form-text text-danger mt-2">Search phase can't be empty</small>}
           </Form.Group>
