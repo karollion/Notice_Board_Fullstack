@@ -8,6 +8,7 @@ exports.register = async (req, res) => {
   try{
     const { login, password, phone } = req.body;
     const fileType = req.file ? await getImageFileType(req.file) : 'unknown';
+    console.log(login, password, phone, req.file.filename)
     phone = Number(phone);
     login = escape(login);
     const avatar = req.file.filename;

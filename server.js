@@ -55,7 +55,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/client/build')));
 
 app.use((req, res) => {
-	res.status(404).json({ message: '404 Not found...qwer32rr' });
+	res.status(404).json({ message: '404 Not found...' });
 });
 
 module.exports = server;
