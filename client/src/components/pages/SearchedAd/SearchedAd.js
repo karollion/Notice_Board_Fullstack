@@ -27,7 +27,7 @@ const SearchedAd = () => {
 			.then(ads => setAdsToShow(ads))
 			.catch(() => setStatus('serverError'))
 	}, [searchPhrase])
-	if (adsToShow.length === 0) return <p>Nothing matches your search....</p>
+	if (!adsToShow) return <p>Nothing matches your search....</p>
 
 	return (
 		<div className={'container'}>
